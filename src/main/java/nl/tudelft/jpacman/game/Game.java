@@ -1,8 +1,5 @@
 package nl.tudelft.jpacman.game;
 
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.List;
 
 import nl.tudelft.jpacman.Launcher;
@@ -73,18 +70,21 @@ public abstract class Game implements LevelObserver {
             }
             inProgress = false;
             getLevel().stop();
-            Launcher.alert();
-            try{
-                if (Launcher.getAgain()){
-                    System.out.println("Again : "+Launcher.getAgain());
-                    Launcher.reset();
-                    Launcher.setAgain(false);
-                    Launcher.launch();
-                }
-            } catch (Exception e) {
-                System.err.println("Again : "+Launcher.getAgain());
-                throw new RuntimeException(e);
-            }
+//            Launcher.alert();
+//            try{
+//                if (Launcher.getAgain()){
+//                    System.out.println("Again : "+Launcher.getAgain());
+//                    Launcher.reset();
+//                    Launcher.setAgain(false);
+//                    Launcher.launch();
+//                }
+//                if(Launcher.NUMBER_MAP>5){
+//                    System.out.println("Finish !!!");
+//                }
+//            } catch (Exception e) {
+//                System.err.println("Again : "+Launcher.getAgain());
+//                throw new RuntimeException(e);
+//            }
 
         }
     }
@@ -125,11 +125,27 @@ public abstract class Game implements LevelObserver {
     @Override
     public void levelWon() {
         stop();
+        Launcher.alertWon();
+        try{
+            if (Launcher.getAgain()){
+                System.out.println("Again : "+Launcher.getAgain());
+                Launcher.reset();
+                Launcher.setAgain(false);
+                Launcher.launch();
+            }
+            if(Launcher.NUMBER_MAP>5){
+                System.out.println("Finish !!!");
+            }
+        } catch (Exception e) {
+            System.err.println("Again : "+Launcher.getAgain());
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void levelLost() {
         stop();
+        Launcher.alertLost();
     }
 
 

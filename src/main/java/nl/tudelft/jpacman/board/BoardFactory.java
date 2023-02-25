@@ -41,7 +41,9 @@ public class BoardFactory {
         Board board = new Board(grid);
 
         int width = board.getWidth();
+        System.out.println("width: "+width);
         int height = board.getHeight();
+        System.out.println("height: "+height);
         for (int x = 0; x < width; x++) {
             for (int y = 0; y < height; y++) {
                 Square square = grid[x][y];

@@ -23,6 +23,10 @@ import nl.tudelft.jpacman.sprite.PacManSprites;
 import nl.tudelft.jpacman.ui.Action;
 import nl.tudelft.jpacman.ui.PacManUI;
 import nl.tudelft.jpacman.ui.PacManUiBuilder;
+import nl.tudelft.jpacman.ui.alertLost;
+import org.w3c.dom.Text;
+
+import javax.swing.*;
 
 /**
  * Creates and launches the JPacMan UI.
@@ -200,13 +204,10 @@ public class Launcher {
         assert pacManUI != null;
         pacManUI.dispose();
         SPRITE_STORE = new PacManSprites();
-
+        NUMBER_MAP +=1;
         if(NUMBER_MAP<=5){
-            NUMBER_MAP +=1;
             DEFAULT_MAP = "/board"+NUMBER_MAP+".txt";
             System.out.println("Map No "+NUMBER_MAP);
-        }else{
-            System.out.println("Change Level !");
         }
 
         builder =null;
@@ -224,7 +225,7 @@ public class Launcher {
         pacManUI.dispose();
     }
 
-    public static void alert(){
+    public static void alertWon(){
         Frame f= new Frame();
         d = new Dialog(f , "You Want To Play More?", true);
         d.setLayout( new FlowLayout() );
@@ -258,6 +259,16 @@ public class Launcher {
         d.setVisible(true);
         System.out.println("=====");
     }
+
+    public static void alertLost(){
+//        JFrame frame = new JFrame("You Lost !!!");
+//        frame.setSize(250, 250);
+//        frame.setLocation(300,200);
+//        frame.setVisible(true);
+        alertLost alert = new alertLost();
+        alert.show();
+    }
+
     public static boolean getAgain(){
         return again;
     }
