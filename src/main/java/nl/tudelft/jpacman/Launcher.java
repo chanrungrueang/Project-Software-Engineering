@@ -20,10 +20,8 @@ import nl.tudelft.jpacman.npc.ghost.GhostFactory;
 import nl.tudelft.jpacman.points.PointCalculator;
 import nl.tudelft.jpacman.points.PointCalculatorLoader;
 import nl.tudelft.jpacman.sprite.PacManSprites;
+import nl.tudelft.jpacman.ui.*;
 import nl.tudelft.jpacman.ui.Action;
-import nl.tudelft.jpacman.ui.PacManUI;
-import nl.tudelft.jpacman.ui.PacManUiBuilder;
-import nl.tudelft.jpacman.ui.alertLost;
 import org.w3c.dom.Text;
 
 import javax.swing.*;
@@ -265,8 +263,9 @@ public class Launcher {
 //        frame.setSize(250, 250);
 //        frame.setLocation(300,200);
 //        frame.setVisible(true);
-        alertLost alert = new alertLost();
-        alert.show();
+//        alertLost alert = new alertLost();
+//        alert.show();
+        SwingTester test = new SwingTester();
     }
 
     public static boolean getAgain(){
