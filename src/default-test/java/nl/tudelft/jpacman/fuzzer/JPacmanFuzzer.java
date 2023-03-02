@@ -25,7 +25,7 @@ import java.util.Random;
  *
  * @author Azqa Nadeem
  */
-@Disabled
+
 class JPacmanFuzzer {
     private static final int RUNS = 5;
     private static final String LOG_HEADER =

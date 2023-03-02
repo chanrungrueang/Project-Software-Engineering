@@ -63,11 +63,9 @@ public class LauncherSmokeTest {
         game.start();
         assertThat(game.isInProgress()).isTrue();
         assertThat(player.getScore()).isZero();
-
         // get points
         game.move(player, Direction.EAST);
         assertThat(player.getScore()).isEqualTo(10);
-
         // now moving back does not change the score
         game.move(player, Direction.WEST);
         assertThat(player.getScore()).isEqualTo(10);
@@ -89,7 +87,6 @@ public class LauncherSmokeTest {
         // Sleeping in tests is generally a bad idea.
         // Here we do it just to let the monsters move.
         Thread.sleep(500L);
-
         // we're close to monsters, this will get us killed.
         move(game, Direction.WEST, 10);
         move(game, Direction.EAST, 10);
@@ -106,9 +103,10 @@ public class LauncherSmokeTest {
      * @param dir The direction to be taken
      * @param numSteps The number of steps to take
      */
-    public static void move(Game game, Direction dir, int numSteps) {
+    public static void move(Game game, Direction dir, int numSteps) throws InterruptedException {
         Player player = game.getPlayers().get(0);
         for (int i = 0; i < numSteps; i++) {
+            Thread.sleep(1000);
             game.move(player, dir);
         }
     }

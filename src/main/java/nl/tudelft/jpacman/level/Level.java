@@ -202,7 +202,7 @@ public class Level {
             if (isInProgress()) {
                 return;
             }
-            startNPCs();
+            startNPCs();//Start ghost walk
             inProgress = true;
             updateObservers();
         }

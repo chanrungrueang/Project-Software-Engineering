@@ -1,0 +1,6 @@
+isAlive, hasCollided, currentDirection, nextDirection, remainingPellets, score
+true false EAST EAST 230 0
+true false EAST EAST 229 10
+true false EAST EAST 228 20
+true false EAST EAST 227 30
+false true EAST EAST 226 40
