@@ -346,6 +346,7 @@ public class Level {
         public void run() {
             Direction nextMove = npc.nextMove();
             if (nextMove != null) {
+                //System.out.println(npc.getSquare());
                 move(npc, nextMove);
             }
             long interval = npc.getInterval();

@@ -59,7 +59,7 @@ public class Launcher {
      * @return The name of the map file.
      */
     protected static String getLevelMap() {
-        return levelMap;
+        return DEFAULT_MAP;
     }
     public void setLevelMap(String DEFAULT_MAP) {
         this.DEFAULT_MAP = DEFAULT_MAP;
@@ -218,7 +218,7 @@ public class Launcher {
      *
      * Precondition: The game was launched first.
      */
-    public void dispose() {
+    public static void dispose() {
         assert pacManUI != null;
         pacManUI.dispose();
     }
@@ -237,7 +237,6 @@ public class Launcher {
                 d.setVisible(false);
                 d.dispose();
                 System.out.println(Launcher.getAgain());
-
             }
         });
         b.addActionListener ( new ActionListener()
@@ -255,6 +254,7 @@ public class Launcher {
         d.add(b);
         d.setSize(200,100);
         d.setVisible(true);
+        d.setLocation(10,10);
         System.out.println("=====");
     }
 
