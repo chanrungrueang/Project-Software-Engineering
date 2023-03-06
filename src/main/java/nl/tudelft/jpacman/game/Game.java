@@ -199,12 +199,14 @@ public abstract class Game implements LevelObserver {
 
     @Override
     public void levelLost() {
+        Player player = getPlayers().get(0);
         int stopHour = LocalTime.now().getHour();
         int stopMinute = LocalTime.now().getMinute();
         int stopSecond = LocalTime.now().getSecond();
         setAllHour(stopHour-getAllHour());
         setAllSecond(stopSecond-getAllSecond());
         setAllMinute(stopMinute-getAllMinute());
+        System.out.println(player.getScore());
         System.out.println("Stop time :" + stopHour+ " " + stopMinute + " " + stopSecond);
         System.out.println("You lost,your time is :" + getAllHour()+ " " + getAllMinute() + " " + getAllSecond());
         stop();
