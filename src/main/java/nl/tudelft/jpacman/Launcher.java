@@ -35,7 +35,7 @@ import javax.swing.*;
 public class Launcher {
     private static PacManSprites SPRITE_STORE = new PacManSprites();
 
-    public static String DEFAULT_MAP = "/board.txt";
+    public static String DEFAULT_MAP = "/board5.txt";
 
     public static Integer NUMBER_MAP = 1;
     private static String levelMap = DEFAULT_MAP;
