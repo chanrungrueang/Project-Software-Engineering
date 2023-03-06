@@ -1,7 +1,8 @@
 package nl.tudelft.jpacman.game;
 
 import java.util.List;
-
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import nl.tudelft.jpacman.Launcher;
 import nl.tudelft.jpacman.board.Direction;
 import nl.tudelft.jpacman.level.Level;
@@ -16,7 +17,49 @@ import nl.tudelft.jpacman.points.PointCalculator;
  * @author Jeroen Roosen
  */
 public abstract class Game implements LevelObserver {
+    public int getAllHour() {
+        return allHour;
+    }
 
+    public void setAllHour(int allHour) {
+        this.allHour = allHour;
+    }
+
+    public int getAllMinute() {
+        return allMinute;
+    }
+
+    public void setAllMinute(int allMinute) {
+        this.allMinute = allMinute;
+    }
+
+    public int getAllSecond() {
+        return allSecond;
+    }
+
+    public void setAllSecond(int allSecond) {
+        this.allSecond = allSecond;
+    }
+
+    public void setInProgress(boolean inProgress) {
+        this.inProgress = inProgress;
+    }
+
+    public Object getProgressLock() {
+        return progressLock;
+    }
+
+    public PointCalculator getPointCalculator() {
+        return pointCalculator;
+    }
+
+    public void setPointCalculator(PointCalculator pointCalculator) {
+        this.pointCalculator = pointCalculator;
+    }
+
+    private int allHour;
+    private int allMinute;
+    private int allSecond;
     /**
      * <code>true</code> if the game is in progress.
      */
@@ -56,8 +99,20 @@ public abstract class Game implements LevelObserver {
                 inProgress = true;
                 getLevel().addObserver(this);
                 getLevel().start();
+                int startHour = LocalTime.now().getHour();
+                int startMinute = LocalTime.now().getMinute();
+                int startSecond = LocalTime.now().getSecond();
+                setAllHour(startHour);
+                setAllMinute(startMinute);
+                setAllSecond(startSecond);
+
+                System.out.println(getAllHour()+ " " + getAllMinute() + " " + getAllSecond());
+
+
             }
         }
+
+
     }
 
     /**
@@ -144,6 +199,14 @@ public abstract class Game implements LevelObserver {
 
     @Override
     public void levelLost() {
+        int stopHour = LocalTime.now().getHour();
+        int stopMinute = LocalTime.now().getMinute();
+        int stopSecond = LocalTime.now().getSecond();
+        setAllHour(stopHour-getAllHour());
+        setAllSecond(stopSecond-getAllSecond());
+        setAllMinute(stopMinute-getAllMinute());
+        System.out.println("Stop time :" + stopHour+ " " + stopMinute + " " + stopSecond);
+        System.out.println("You lost,your time is :" + getAllHour()+ " " + getAllMinute() + " " + getAllSecond());
         stop();
         Launcher.alertLost();
     }
